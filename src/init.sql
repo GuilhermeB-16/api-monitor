@@ -1,0 +1,9 @@
+CREATE SCHEMA IF NOT EXISTS api_monitor;
+
+CREATE TABLE IF NOT EXISTS api_monitor.metrics (
+  id BIGSERIAL PRIMARY KEY,
+  service_name TEXT NOT NULL,
+  cpu NUMERIC(5, 2) NOT NULL,
+  memory NUMERIC(10, 2) NOT NULL,
+  collected_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

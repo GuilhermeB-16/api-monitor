@@ -1,0 +1,26 @@
+name:
+  CI - API Monitor
+  # Este workflow é acionado em push e pull request para a branch main. Ele executa testes automatizados usando Node.js.
+on:
+  push:
+  pull_request:
+# O jobs define as tarefas que serão executadas no workflow. Neste caso, temos um job chamado "test" que roda em um ambiente Ubuntu que está na nuvem.
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # OS Steps são as etapas que compõem o job. Cada step pode executar comandos, usar ações pré-definidas ou scripts personalizados. Nesse caso, temos quatro steps: baixar o código, configurar Node.js, instalar dependências e executar testes.
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes
+        run: npm test
