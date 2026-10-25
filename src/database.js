@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
 import { Pool } from "pg";
 
-/*Esse trecho de código serve para carregar as variáveis de ambiente. Esse trecho só será executado se as variáveis estiverem definidas. Caso ela seja diferente de uma string não vazia, será lançado um erro.*/
 dotenv.config({ path: fileURLToPath(new URL("../.env", import.meta.url)) });
 
 function requiredEnv(name) {
